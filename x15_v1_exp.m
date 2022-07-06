@@ -839,8 +839,6 @@ if ~isempty(Data)
                                                 '_pos2_',sec_start,'-',sec_end,'_pix_',p_or_m,'_config_',current_config_name,'_clock_',current_time{2},'.csv');
 
                 settings.rt_file_name = fullfile(pwd, settings.rt_folder_name,settings.rt_file_name);
-
-                %add current date to filename.
                 
                 if exist(settings.rt_folder_name,'dir')~=7
                     mkdir(settings.rt_folder_name);
@@ -848,8 +846,6 @@ if ~isempty(Data)
 
                 settings.rt_fid = fopen(settings.rt_file_name,'w');
                 fprintf(settings.rt_fid,settings.rt_columns);
-
-                %disp('Beginning optimization...');
                 
                 settings.start_optimize = 1;
                 settings.set_rt         = settings.set_rt + 1;
@@ -1250,7 +1246,6 @@ if ~isempty(Data)
                 else
                     settings.optimization_count = 0;
                     settings.post_conv_ctr      = 0;
-                    settings.delta              = 0;
                     settings.set_rt             = -1;
                     
                     file_content = [settings.ledI];
@@ -1296,7 +1291,6 @@ if ~isempty(Data)
 
                 fclose(settings.rt_fid);
                 settings.rt_file_name = 'rt_';
-                settings.delta = 0;
             end          
             
             %stagnating updates
@@ -1320,8 +1314,6 @@ if ~isempty(Data)
                         
                         disp('LED deltas flatline/low amplitude oscillation.Stopping early.');
                         set(handles.baselineEdit,'BackgroundColor',[64,64,255]/255);
-                        %disp(settings.optimization_count);
-                        disp(settings.adapt_memory_vis_leds);
 
                         settings.adapt_end          = 1;
                         settings.converged          = 1;
@@ -1344,7 +1336,6 @@ if ~isempty(Data)
 
                         fclose(settings.rt_fid);
                         settings.rt_file_name = 'rt_';
-                        settings.delta = 0;
                     
                     end
                     
