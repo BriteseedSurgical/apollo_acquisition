@@ -51,6 +51,7 @@ end
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to auto_transmission_gui_v1 (see
 % VARARGIN)
+settings.sys_name = 'root';
 
 % 0 for super pixel, 1 for line-by-line all pixel
 settings.operation_mode = 0;
@@ -831,7 +832,7 @@ if ~isempty(Data)
                 
                 p_or_m = num2str(settings.pixels_or_markers);
        
-                settings.rt_file_name = strcat('x15_rt','_d_',current_date,'_v_',vessel,'_vs_',vesselsize,'_t_',tissue,'_th_', thickness,...
+                settings.rt_file_name = strcat('x15_rt','_sys_',settings.sys_name,'_d_',current_date,'_v_',vessel,'_vs_',vesselsize,'_t_',tissue,'_th_', thickness,...
                                                 '_b_',baseline, '_c_',comment,'_tool_', tool,'_line_',line,'_user_', user ,...
                                                 '_o_',orientation,'_app_',approach,'_ja_',ja_manual,'_s1_',pig_1_id,'-',pig_1_sample,'-',pig_1_subsample,...
                                                 '_s2_',pig_2_id,'-',pig_2_sample,'-',pig_2_subsample,...
